@@ -29,6 +29,10 @@
 
   let cameraRig = new Object3D();
 
+  let stats = new Stats();
+  stats.showPanel(0)
+  stats.domElement.className = 'stats'
+  document.body.appendChild(stats.domElement)
   //let controls = new THREE.OrbitControls ( camera, renderer.domElement )
 
   //let cube = new THREE.Mesh( defaultGeo, defaultMat)
@@ -42,11 +46,13 @@
   function addElement(elementData, index) {
 
     let obj = {
-      //mesh = new THREE.boxGeometry()
-      mesh: new THREE.Mesh(defaultGeo, defaultMat)
+      geo: new THREE.BoxGeometry(0.9, 0.9, elementData.mol / 100),
+      mat: new THREE.MeshBasicMaterial({ color: (index + 10) * 131586 }),//Math.floor(Math.random()*16777216)} ),
+      //mesh: new THREE.Mesh(defaultGeo, obj.mat)
     }
-
+    obj.mesh = new THREE.Mesh(obj.geo, obj.mat)
     obj.mesh.position.x = elementData.group - 9.5
+    obj.mesh.position.z = elementData.mol / 200
     obj.mesh.position.y = 5 - elementData.period
 
     tableObjects.add(obj.mesh)
@@ -56,14 +62,17 @@
 
   function render() {
     requestAnimationFrame(render);
+    stats.begin();
     cameraRig.rotation.y -= 0.005
     renderer.render(scene, camera)
+    stats.end();
   }
 
   function load(table) {
     //console.table(table)
 
     table.forEach(addElement)
+    console.table(tableArray)
     render()
   }
 
