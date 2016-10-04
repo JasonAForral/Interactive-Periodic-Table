@@ -36,7 +36,7 @@ function load (table) {
   
   table.forEach(addElement)
 
-
+  //this comment makes a change
 
   //console.log(tableDOM[0])
   
