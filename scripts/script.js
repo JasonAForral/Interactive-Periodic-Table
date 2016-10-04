@@ -19,28 +19,32 @@
   let tableObjects = new Object3D()
 
   let scene = new Scene();
-  let camera = new THREE.PerspectiveCamera ( 75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   let renderer = new THREE.WebGLRenderer();
-  renderer.setSize ( window.innerWidth, window.innerHeight );
-  container.appendChild( renderer.domElement );
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  container.appendChild(renderer.domElement);
 
-  let defaultMat = new THREE.MeshBasicMaterial( {color: 0x336699} );
-  let defaultGeo = new THREE.BoxGeometry( 0.9, 0.9, 0.1 );
+  let defaultMat = new THREE.MeshBasicMaterial({ color: 0x336699 });
+  let defaultGeo = new THREE.BoxGeometry(0.9, 0.9, 0.1);
+
+  let cameraRig = new Object3D();
 
   //let controls = new THREE.OrbitControls ( camera, renderer.domElement )
 
   //let cube = new THREE.Mesh( defaultGeo, defaultMat)
   //scene.add( cube )
-  scene.add( tableObjects )
+  scene.add(tableObjects)
+  scene.add(cameraRig)
 
   camera.position.z = 15;
-  
-  function addElement( elementData, index ) {
-    
+  cameraRig.add(camera)
+
+  function addElement(elementData, index) {
+
     let obj = {
       //mesh = new THREE.boxGeometry()
-      mesh: new THREE.Mesh ( defaultGeo, defaultMat )
-    } 
+      mesh: new THREE.Mesh(defaultGeo, defaultMat)
+    }
 
     obj.mesh.position.x = elementData.group - 9.5
     obj.mesh.position.y = 5 - elementData.period
@@ -51,9 +55,9 @@
   }
 
   function render() {
-    requestAnimationFrame (render);
-    tableObjects.rotation.y += 0.005
-    renderer.render ( scene, camera )
+    requestAnimationFrame(render);
+    cameraRig.rotation.y -= 0.005
+    renderer.render(scene, camera)
   }
 
   function load(table) {
