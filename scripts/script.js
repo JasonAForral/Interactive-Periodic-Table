@@ -47,7 +47,8 @@
 
     let obj = {
       geo: new THREE.BoxGeometry(0.9, 0.9, elementData.mol / 100),
-      mat: new THREE.MeshBasicMaterial({ color: (index + 10) * 131586 }),//Math.floor(Math.random()*16777216)} ),
+      mat: new THREE.MeshBasicMaterial({ color: (index + 10) * 131586 }),
+      //Math.floor(Math.random()*16777216)} ),
       //mesh: new THREE.Mesh(defaultGeo, obj.mat)
     }
     obj.mesh = new THREE.Mesh(obj.geo, obj.mat)
@@ -69,10 +70,7 @@
   }
 
   function load(table) {
-    //console.table(table)
-
     table.forEach(addElement)
-    console.table(tableArray)
     render()
   }
 
