@@ -12,7 +12,7 @@
 } = THREE,
 container = document.getElementById('container')
 
-let url = "http://tsinoyboi.github.io/scripts/periodicTableSimple.json";
+let url = "https://tsinoyboi.github.io/Interactive-Periodic-Table/scripts/periodicTableSimple.json";
 let body = document.body;
 let tableDOM = []
 
