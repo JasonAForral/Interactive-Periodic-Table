@@ -30,16 +30,12 @@ function addElement (elementData, index) {
 }
 
 function load (table) {
-  //console.log()
-  //table = JSON.parse(table)
-  console.table(table)
+  //console.table(table)
   
   table.forEach(addElement)
 
-  //this comment makes a change
-
-
-  console.log(tableDOM[0])
+  
+  //console.log(tableDOM[0])
   
 }
 
