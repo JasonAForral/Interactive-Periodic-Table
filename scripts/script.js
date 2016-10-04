@@ -27,30 +27,22 @@
   let defaultMat = new THREE.MeshBasicMaterial( {color: 0x336699} );
   let defaultGeo = new THREE.BoxGeometry( 0.9, 0.9, 0.1 );
 
+  //let controls = new THREE.OrbitControls ( camera, renderer.domElement )
+
   //let cube = new THREE.Mesh( defaultGeo, defaultMat)
   //scene.add( cube )
   scene.add( tableObjects )
 
-  camera.position.z = 20;
+  camera.position.z = 15;
   
   function addElement( elementData, index ) {
-    // let div = document.createElement('div');
-    // div.textContent = elementData.symbol;
-    // div.style.display = 'inline-block'
-    // div.style.width = 40
-    // div.style.height = 60
-    // div.style.position = 'absolute'
-    // div.style.left = elementData.group * 40
-    // div.style.top = elementData.period * 60
-    // body.appendChild(div)
-    // tableDOM[index] = div
-
+    
     let obj = {
       //mesh = new THREE.boxGeometry()
       mesh: new THREE.Mesh ( defaultGeo, defaultMat )
     } 
 
-    obj.mesh.position.x = elementData.group - 10
+    obj.mesh.position.x = elementData.group - 9.5
     obj.mesh.position.y = 5 - elementData.period
 
     tableObjects.add(obj.mesh)
@@ -60,6 +52,7 @@
 
   function render() {
     requestAnimationFrame (render);
+    tableObjects.rotation.y += 0.005
     renderer.render ( scene, camera )
   }
 
