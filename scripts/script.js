@@ -38,7 +38,8 @@ function load (table) {
 
   //this comment makes a change
 
-  //console.log(tableDOM[0])
+
+  console.log(tableDOM[0])
   
 }
 
