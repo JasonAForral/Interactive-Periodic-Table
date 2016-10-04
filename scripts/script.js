@@ -34,9 +34,6 @@ function load (table) {
   
   table.forEach(addElement)
 
-  
-  //console.log(tableDOM[0])
-  
 }
 
 
