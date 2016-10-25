@@ -13,8 +13,8 @@
   } = THREE,
     container = document.getElementById('container');
 
-  let url = "https://tsinoyboi.github.io/Interactive-Periodic-Table/scripts/periodicTableSimple.json";
-  //let body = document.body;
+  let url = "scripts/periodicTableSimple.json";
+  
   let tableArray = []
   let tableObjects = new Object3D()
 
